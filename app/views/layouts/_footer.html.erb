@@ -1,7 +1,8 @@
 <footer class="main-footer">
   <div class="pull-right hidden-xs">
-    <b>Version</b> 2.4.0
+    <p> Time Now: <%= Time.now.strftime("%I:%M %p") %></p>
+    <p> <%= Time.now.strftime("%A") %>, <%= Time.now.strftime("%b %d, %Y") %> </p>
   </div>
-  <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-  reserved.
+  <p><%= link_to "Home", root_path %> <%= link_to "Privacy Policy", root_path %> <%= link_to "Terms & Conditions", root_path %> <%= link_to "FAQs", root_path %> <%= link_to "Payment Options", root_path %></p>
+  <strong>&copy; Almsaeed Studio 2014-2016 </strong>
 </footer>

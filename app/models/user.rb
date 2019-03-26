@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
+  has_many :pages
+  has_many :pagesposts
+  has_many :posts, through: :pagesposts
 
  def self.new_with_session(params, session)
    super.tap do |user|
@@ -18,15 +21,20 @@ class User < ApplicationRecord
      user.email = auth.info.email
      user.uid = auth.uid
      user.oauth_token = auth.credentials.token
-     user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+     user.oauth_expires_at = Time.at(auth.credentials.expires_at.to_i)
      user.password = Devise.friendly_token[0,20]
      user.username = auth.info.name   # assuming the user model has a name
      user.image = auth.info.image # assuming the user model has an image
+     name = user.username.split(" ")
+     user.first_name = name.first
+     user.last_name = name.last
    end
   end
 
   def facebook
     @facebook ||= Koala::Facebook::API.new(oauth_token)
   end
+
+
 
 end

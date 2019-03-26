@@ -47,6 +47,7 @@ gem 'koala'
 gem 'bootstrap-sass'
 # gem 'jquery-rails'
 gem 'font-awesome-sass'
+gem 'font-awesome-rails'
 
 source 'https://rails-assets.org/' do
   gem 'rails-assets-adminlte'
