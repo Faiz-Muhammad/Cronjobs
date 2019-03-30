@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   # before_action :return_array_of_objects
+  after_action: :set_checkbox_value, only: [:update]
 
   def index
     @accounts = current_user.facebook.get_connections("me", "accounts")
