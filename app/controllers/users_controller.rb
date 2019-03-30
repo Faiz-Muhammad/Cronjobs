@@ -6,12 +6,14 @@ class UsersController < ApplicationController
     @accounts = current_user.facebook.get_connections("me", "accounts")
     @pages = []
     @accounts.each do |account|
-      @pages << current_user.pages.build(
-        page_name: account['name'],
-         fb_page_id: account['id'],
-          page_access_token: account['access_token'],
-         page_image: "https://graph.facebook.com/v2.12/#{account["id"]}/picture?access_token=#{account["access_token"]}&width=50&height=50",
-       user_id: current_user.id )
+      if !Page.exists?(page_name: account['name'])
+        @pages << current_user.pages.build(
+          page_name: account['name'],
+           fb_page_id: account['id'],
+            page_access_token: account['access_token'],
+           page_image: "https://graph.facebook.com/v2.12/#{account["id"]}/picture?access_token=#{account["access_token"]}&width=50&height=50",
+         user_id: current_user.id )
+       end
     end
   end
 
@@ -27,6 +29,7 @@ class UsersController < ApplicationController
     update_params = Hash.new
     i = 0
     user_params[:pages_attributes].each do |page|
+      debugger
       if page[1][:checkbox_value].to_i != 0
         update_params.merge!("#{i}" => page[1].to_h)
         i += 1

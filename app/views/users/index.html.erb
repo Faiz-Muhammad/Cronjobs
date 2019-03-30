@@ -36,7 +36,7 @@
 
                       <%= f.fields_for :pages do |p| %>
                       <!-- <label class="checkboxcontainer" for="storesty"> -->
-                      <% if !@pages[p.index].nil? && !current_user.pages.include?(@pages[p.index].fb_page_id)  %>
+                      <% unless @pages[p.index].nil?  %>
                       <label>
                         <%= p.check_box :checkbox_value %>
                         <%= image_tag((@pages[p.index].page_image), class: "img-circle") %><%= @pages[p.index].page_name %>
