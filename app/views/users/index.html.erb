@@ -1,0 +1,81 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <% @page_title = "My Facebook Pages" %>
+  <%= render 'layouts/page_header' %>
+  <!-- Main content -->
+  <section class="content">
+    <main>
+      <section class="maincontainer">
+        <!-- <div class="pageheaderTop"><h2 class="pageheaderTop__heading">My Facebook Pages</h2> -->
+          <!-- </div> -->
+            <section class="notification">
+              <div class="notification__container notification__simple"> <span class="notification__text">You can only import pages that you are admin of.</span></div>
+              <!-- <div class="notification__container notification__warning"> <span class="notification__text">
+              </span>Warning:You can import 5 facebook accounts. To increase limit please upgrade your membership</span>
+              </div> -->
+            </section>
+          <section class="pages">
+            <div class="pages__content">
+              <div class="check__all">
+                <label class="checkboxcontainer">Check all
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="profile__selector">
+                Select Facebook Pages:
+              </div>
+            </div>
+              <div class="pages__data">
+                <div class="pages__data-container">
+                  <%= bootstrap_form_for(current_user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+                    <%= f.hidden_field :first_name, autofocus: true, autocomplete: 'first name', class: 'form-control' %>
+                    <%= f.hidden_field :last_name, autofocus: true, autocomplete: 'last name', class: 'form-control' %>
+                    <%= f.hidden_field :phone_number, autofocus: true, autocomplete: 'phone number', class: 'form-control' %>
+                    <%= f.hidden_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+
+                      <%= f.fields_for :pages do |p| %>
+                      <!-- <label class="checkboxcontainer" for="storesty"> -->
+                      <% if !@pages[p.index].nil? && !current_user.pages.include?(@pages[p.index].fb_page_id)  %>
+                      <label>
+                        <%= p.check_box :checkbox_value %>
+                        <%= image_tag((@pages[p.index].page_image), class: "img-circle") %><%= @pages[p.index].page_name %>
+                      </label>
+                      <% end %>
+                        <!-- <img src="img/img.jpeg" alt="Profile Photo" class="pages__profile-img">Storesty -->
+
+                        <!-- <input type="checkbox" id="storesty" checked="checked">
+                        <span class="checkmark"></span> -->
+                      <!-- </label> -->
+                        <%= p.hidden_field :page_name %>
+                        <%= p.hidden_field :fb_page_id %>
+                        <%= p.hidden_field :page_access_token %>
+                        <%= p.hidden_field :page_image %>
+
+
+                  <!-- <label class="checkboxcontainer" for="watchland">
+                    <img src="img/img.jpeg" alt="Profile Photo" class="pages__profile-img">TheWatchesLand
+                    <input type="checkbox" id="watchland">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="checkboxcontainer" for="personalthoughts">
+                    <img src="img/img.jpeg" alt="Profile Photo" class="pages__profile-img">Personal thought
+                    <input type="checkbox" id="personalthoughts">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="checkboxcontainer" for="13reason">
+                    <img src="img/img.jpeg" alt="Profile Photo" class="pages__profile-img">13 Reasons Why
+                    <input type="checkbox" id="13reason">
+                    <span class="checkmark"></span>
+                  </label> -->
+                    <% end %>
+                    <%= submit_tag %>
+                  <% end %>
+                </div>
+              </div>
+          </section>
+        </section>
+      </section>
+    </main>
+  </section>
+</div>

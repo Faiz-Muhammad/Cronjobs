@@ -1,0 +1,19 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <% @page_title = "My Social Accounts" %>
+  <%= render 'layouts/page_header' %>
+
+  <!-- Main content -->
+  <section class="content">
+    <% if current_user.pages.count != 0 %>
+      <% current_user.pages.each do |page|  %>
+      <ul>
+        <li><%= image_tag(("https://graph.facebook.com/v2.12/#{page.fb_page_id}/picture?access_token=#{page.page_access_token}&width=50&height=50"), class: "img-circle") %>  <%= page.page_name %></li>
+      </ul>
+      <% end %>
+    <% else %>
+        <h5> You don't have saved pages. Please import pages from facebook to get started.</h5>
+        <%= link_to "Import Pages", users_path %>
+    <% end %>
+  </section>
+</div>

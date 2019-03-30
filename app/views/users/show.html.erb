@@ -1,0 +1,61 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <% @page_title = "My Profile" %>
+  <%= render 'layouts/page_header' %>
+
+  <!-- Main content -->
+  <section class="content">
+    <div>
+      <div class="box">
+        <!-- /.box-header -->
+        <div class="box-body no-padding">
+          <table class="table">
+            <tr>
+              <td style="width: 10px"></td>
+              <td>Account ID:</td>
+              <td><%= current_user.id %></td>
+              <td style="width: 40px"></td>
+            </tr>
+            <tr>
+              <td style="width: 10px"></td>
+              <td>First Name:</td>
+              <td><%= current_user.first_name %></td>
+              <td style="width: 40px"></td>
+            </tr>
+            <tr>
+              <td style="width: 10px"></td>
+              <td>Last Name:</td>
+              <td><%= current_user.last_name %></td>
+              <td style="width: 40px"></td>
+            </tr>
+            <tr>
+              <td style="width: 10px"></td>
+              <td>Email:</td>
+              <td><%= current_user.email %></td>
+              <td style="width: 40px"></td>
+            </tr>
+            <tr>
+              <td style="width: 10px"></td>
+              <td>Mobile Number:</td>
+              <td><%= current_user.phone_number %></td>
+              <td style="width: 40px"></td>
+            </tr>
+            <tr>
+              <td style="width: 10px"></td>
+              <td>Facebook Profile:</td>
+              <td><%= image_tag(current_user.image) %> <%= current_user.username %> (<%= current_user.uid %>)</td>
+              <td style="width: 40px"></td>
+            </tr>
+            <tr>
+              <td style="width: 10px"></td>
+              <td></td>
+              <td><%= link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-primary" %></td>
+            </tr>
+          </table>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+    </div>
+  </section>
+</div>

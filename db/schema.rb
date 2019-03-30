@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_25_162637) do
+ActiveRecord::Schema.define(version: 2019_03_29_114922) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,7 +41,11 @@ ActiveRecord::Schema.define(version: 2019_03_25_162637) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_pages_on_user_id", unique: true
+    t.boolean "checkbox_value", default: true
+    t.index ["user_id"], name: "index_pages_on_user_id"
+  end
+
+  create_table "pages_tables", force: :cascade do |t|
   end
 
   create_table "pagesposts", force: :cascade do |t|

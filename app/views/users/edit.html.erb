@@ -1,0 +1,67 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <% @page_title = "Edit Profile" %>
+  <%= render 'layouts/page_header' %>
+
+  <!-- Main content -->
+  <section class="content">
+    <%= form_for(current_user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label class="col-lg-3 control-label">First Name:</label>
+        <div class="col-lg-8">
+          <%= f.text_field :first_name, autofocus: true, autocomplete: 'first name', class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-3 control-label">Last Name:</label>
+        <div class="col-lg-8">
+          <%= f.text_field :last_name, autofocus: true, autocomplete: 'last name', class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-3 control-label">Phone Number:</label>
+        <div class="col-lg-8">
+          <%= f.text_field :phone_number, autofocus: true, autocomplete: 'phone number', class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-3 control-label">Email:</label>
+        <div class="col-lg-8">
+          <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+        </div>
+      </div>
+       <!-- <div class="form-group">
+        <label class="col-md-3 control-label">Password:</label>
+        <div class="col-md-8">
+          <%= f.password_field :password, class: 'form-control', include_blank: true %>
+
+          <small class="form-text text-muted"><%= ('leave_blank_if_you_don_t_want_to_change_it') %></small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Confirm Password:</label>
+        <div class="col-md-8">
+          <%= f.password_field :password_confirmation, class: 'form-control'  %>
+        </div>
+      </div> -->
+      <!-- <div class="form-group">
+        <label class="col-md-3 control-label">Current password:</label>
+        <div class="col-md-8">
+          <%= f.password_field :current_password, autocomplete: 'current-password', class: 'form-control' %>
+
+          <small class="form-text text-muted"><%= ('.we_need_your_current_password_to_confirm_your_changes') %></small>
+        </div>
+      </div> -->
+      <div class="form-group">
+        <label class="col-md-3 control-label"></label>
+        <div class="col-md-8">
+          <%= f.submit ('Update'), class: 'btn btn-primary' %>
+          <span></span>
+          <%= link_to ('Back'), :back, class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </form>
+    <% end %>
+  </section>
+</div>

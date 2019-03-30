@@ -17,3 +17,233 @@
 .img-circle {
     border-radius: 50%;
 }
+
+.text-color {
+  text-decoration-color: #fff;
+}
+
+
+
+
+// Testing
+
+/* Hide the browser's default checkbox */
+.checkboxcontainer {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 1rem;
+  margin-right: 10px; }
+
+/* Hide the browser's default checkbox */
+.checkboxcontainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0; }
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(0, 0, 0, 0.7); }
+
+/* When the checkbox is checked, add a blue background */
+.checkboxcontainer input:checked ~ .checkmark {
+  background-color: rgba(255, 255, 255, 0.9); }
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none; }
+
+/* Show the checkmark when checked */
+.checkboxcontainer input:checked ~ .checkmark:after {
+  display: block; }
+
+/* Style the checkmark/indicator */
+.checkboxcontainer .checkmark:after {
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #000;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg); }
+
+.notification {
+  margin: 1rem;
+  margin-left: 0;
+  color: #fff; }
+  .notification__container {
+    width: 90%;
+    padding: 7px; }
+    .notification__container:not(:last-child) {
+      margin-bottom: 10px; }
+  .notification__simple {
+    background-color: rgba(76, 175, 80, 0.5); }
+  .notification__warning {
+    background-color: rgba(255, 0, 0, 0.5); }
+  .notification__success {
+    background-color: rgba(77, 77, 255, 0.5); }
+
+.pageheaderTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.white-btn,
+.white-btn::after,
+.white-btn::before {
+  background-color: #1FC2F5;
+  padding: 1rem;
+  border-radius: .6rem;
+  text-decoration: none;
+  color: #6D5D4B; }
+
+.pages__profile-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 100px;
+  position: relative;
+  top: -11px;
+  margin-right: 1rem; }
+
+.pages__data-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 60vw;
+  justify-content: space-between; }
+  @media only screen and (max-width: 700px) {
+    .pages__data-container {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr); }
+    }
+    .btns {
+      text-decoration: none;
+      color: black;
+      cursor: pointer;
+      width: max-content;
+      padding: 10px 15px;
+      border: 1px solid rgba(0, 0, 0, 0.4);
+      margin: 0 10px 10px 0px;
+      transition: all .3s;
+      font-size: 1.1rem; }
+      .btns:hover {
+        background-color: #000;
+        color: #fff;
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.4); }
+
+    .forms__input {
+      border-radius: 3px;
+      color: inherit;
+      font-family: inherit;
+      padding: 10px 10px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-bottom: 3px solid transparent;
+      display: block;
+      width: 30%;
+      transition: all .3s; }
+      .forms__input:-webkit-input-placeholder {
+        color: currentColor; }
+      .forms__input:focus:invalid {
+        border-bottom: 3px solid #FF0000; }
+      .forms__input:focus {
+        outline: none;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+        border-bottom: 3px solid #4CAF50; }
+
+    .forms__label {
+      font-size: 1.2rem;
+      display: block;
+      margin-left: 2rem;
+      font-weight: 700;
+      transition: all .3s; }
+
+    .forms__group:not(:last-child) {
+      margin-bottom: 10px; }
+
+    .forms__input:placeholder-shown + .forms__label {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-4rem); }
+
+    .selected {
+      appearance: none;
+      border-radius: 0; }
+
+    label[for="favcity"] {
+      position: relative;
+      display: block;
+      width: 400px;
+      overflow: hidden;
+      cursor: pointer; }
+
+    label[for="favcity"]::after {
+      content: " ";
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 40px;
+      height: 100%;
+      display: block;
+      background: #24d7ea url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOBAMAAAGq7RFVAAAAJ1BMVEX///////////////////////////////////////////////////9Ruv0SAAAADHRSTlMACAoREoKDt7y9zc5qtZoyAAAAcklEQVQIHQXBsQnCUAAFwFOCCKbIABaWERzi1yaFAzmEpHYEC8GUKVQEkbyhvOOkZqdWt0/QYKqLzQeF7dv6y/RLwa2wYtk4Xxxe+t8yd1WuM/rcUc2gYHEeoP02umSgTR50ybBPRuiSZAS6ZAQ4jgCAPyjYJiRH4fymAAAAAElFTkSuQmCC") no-repeat center center;
+      pointer-events: none; }
+
+    label[for="favcity"] .selected {
+      border: 5px solid #eeeeee;
+      background: white;
+      padding: 7px 20px 7px 20px;
+      width: 100%;
+      font-size: 16px;
+      font-family: monospace;
+      cursor: pointer; }
+
+    .topbar {
+      color: red;
+      display: flex;
+      justify-content: space-between; }
+
+    .btn-handler {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 5px;
+      border-bottom: 1px solid #A6A6FF;
+      padding-left: 0; }
+
+    .step2 {
+      border-top: 1px solid #3C8DBC;
+      margin-top: 8px; }
+
+    .form__text-box {
+      font-weight: bold;
+      color: #FF0000; }
+
+    .checkboxescon {
+      display: flex;
+      flex-wrap: wrap; }
+
+    .btns__handler {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap; }
+
+    .u-margin-bottom-small {
+      margin-bottom: 8px !important; }
+
+    .u-margin-bottom-medium {
+      margin-bottom: 12px; }

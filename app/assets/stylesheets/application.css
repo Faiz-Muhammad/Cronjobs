@@ -16,6 +16,7 @@
  *= require ionicons.min.css
  *= require adminlte
  *= require skin-blue
+ *= require rails_bootstrap_forms
  *= require_tree .
  *= require_self
  */

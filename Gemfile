@@ -48,6 +48,7 @@ gem 'bootstrap-sass'
 # gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem 'font-awesome-rails'
+gem "bootstrap_form", ">= 4.2.0"
 
 source 'https://rails-assets.org/' do
   gem 'rails-assets-adminlte'
