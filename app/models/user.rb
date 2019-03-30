@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :posts, through: :pagesposts
 
   accepts_nested_attributes_for :pages, allow_destroy: true, reject_if: :all_blank
+  attr_accessor :checkbox_value
 
  def self.new_with_session(params, session)
    super.tap do |user|

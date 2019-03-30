@@ -29,7 +29,6 @@ class UsersController < ApplicationController
     update_params = Hash.new
     i = 0
     user_params[:pages_attributes].each do |page|
-      debugger
       if page[1][:checkbox_value].to_i != 0
         update_params.merge!("#{i}" => page[1].to_h)
         i += 1
@@ -45,18 +44,26 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :phone_number, :image, :first_name, :email, :last_name, pages_attributes: [:id, :page_name, :fb_page_id, :page_image, :page_access_token, :checkbox_value, :user_id])
+    params.require(:user).permit(:username, :phone_number, :image, :first_name, :email, :last_name,
+       pages_attributes: [:id, :page_name, :fb_page_id, :page_image, :page_access_token, :checkbox_value, :user_id])
   end
 
   def set_user
     @user = User.find_by(id: params[:id])
   end
 
-  def return_array_of_objects
+  def return_array_of_object
     @accounts = current_user.facebook.get_connections("me", "accounts")
     objects_array = []
     @accounts.each do |account|
       objects_array << account
+    end
+  end
+
+  def set_checkbox_value
+    @pages = current_user.pages.all
+    @pages.each do |page|
+      page.update_attribute(:checkbox_value, false)
     end
   end
 

@@ -15,17 +15,18 @@
               </div> -->
             </section>
           <section class="pages">
-            <div class="pages__content">
-              <div class="check__all">
-                <label class="checkboxcontainer">Check all
-                  <input type="checkbox">
-                  <span class="checkmark"></span>
-                </label>
+            <% if current_user.pages.count != @accounts.count %>
+              <div class="pages__content">
+                <!-- <div class="check__all">
+                  <label class="checkboxcontainer">Check all
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                  </label>
+                </div> -->
+                <div class="profile__selector">
+                  Select Facebook Pages:
+                </div>
               </div>
-              <div class="profile__selector">
-                Select Facebook Pages:
-              </div>
-            </div>
               <div class="pages__data">
                 <div class="pages__data-container">
                   <%= bootstrap_form_for(current_user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
@@ -33,15 +34,17 @@
                     <%= f.hidden_field :last_name, autofocus: true, autocomplete: 'last name', class: 'form-control' %>
                     <%= f.hidden_field :phone_number, autofocus: true, autocomplete: 'phone number', class: 'form-control' %>
                     <%= f.hidden_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
-
+                      <% #debugger %>
+                      <% ind = 0 %>
                       <%= f.fields_for :pages do |p| %>
                       <!-- <label class="checkboxcontainer" for="storesty"> -->
-                      <% unless @pages[p.index].nil?  %>
-                      <label>
-                        <%= p.check_box :checkbox_value %>
-                        <%= image_tag((@pages[p.index].page_image), class: "img-circle") %><%= @pages[p.index].page_name %>
-                      </label>
-                      <% end %>
+
+                      <% if p.object.new_record?  %>
+                          <label>
+                            <%= p.check_box :checkbox_value %>
+                            <%= image_tag((@pages[ind].page_image), class: "img-circle") %><%= @pages[ind].page_name %>
+                            <% ind += 1 %>
+                          </label>
                         <!-- <img src="img/img.jpeg" alt="Profile Photo" class="pages__profile-img">Storesty -->
 
                         <!-- <input type="checkbox" id="storesty" checked="checked">
@@ -51,7 +54,7 @@
                         <%= p.hidden_field :fb_page_id %>
                         <%= p.hidden_field :page_access_token %>
                         <%= p.hidden_field :page_image %>
-
+                        <% end %>
 
                   <!-- <label class="checkboxcontainer" for="watchland">
                     <img src="img/img.jpeg" alt="Profile Photo" class="pages__profile-img">TheWatchesLand
@@ -73,6 +76,19 @@
                   <% end %>
                 </div>
               </div>
+            <% else %>
+            <section class="notification">
+              <!-- <div class="check__all">
+                <label class="checkboxcontainer">Check all
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+                </label>
+              </div> -->
+              <div class="notification__container notification__simple">
+                <h5><span class="notification__text">Your all pages have already been added.</span></h5>
+              </div>
+            </section>
+            <% end %>
           </section>
         </section>
       </section>

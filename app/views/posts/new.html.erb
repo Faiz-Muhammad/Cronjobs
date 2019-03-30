@@ -1,0 +1,88 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <% @page_title = "My Social Accounts" %>
+  <%= render 'layouts/page_header' %>
+
+  <!-- Main content -->
+  <section class="content">
+    <section class="container">
+      <main>
+        <div class="topbar">
+          <h4 class="topbar__heading">ADD POSTS - SCHEDULE IN TWO SIMPLE STEPS</h4>
+          <span class="topbar__accounts"> Add Social Media Accounts
+            <button class="btn btn-social-icon btn-facebook">
+              <span class="fa fa-facebook"></span>
+            </button>
+          </span>
+        </div>
+        <section class="notification u-margin-bottom-small">
+          <div class="notification__container notification__simple">
+            <span class="notification__text">Pages saved successfully.</span>
+          </div>
+            <div class="notification__container notification__success">
+              <span class="notification__text">Your Trial Membership will expire in 28 days.
+                Click here to upgrade. Or Contact Us if you have any questions.
+              </span>
+            </div>
+        </section>
+        <section class="btn-handler u-margin-bottom-small">
+          <a class="btns-white btns" href="#">Refresh Access Tokens</a>
+          <a class="btns-white btns" href="#">Manage Social Media Accounts</a>
+        </section>
+        <section class="forms u-margin-bottom-small">
+          <div class="forms__step1 u-margin-bottom-small">
+            <div class="form__text-box">Step 1 : Select from Pages or Categories where you want to publish&nbsp;</div>
+            <div class="checkboxescon">
+              <label class="checkboxcontainer u-margin-bottom-small" for="checkall">Select all
+                <input type="checkbox" id="checkall">
+                <span class="checkmark"></span>
+              </label>
+               <label class="checkboxcontainer u-margin-bottom-small" for="pageimages">Load Page Images
+                 <input type="checkbox" id="pageimages">
+                 <span class="checkmark"></span>
+               </label>
+             </div>
+          </div>
+          <div class="form__text u-margin-bottom-small">
+            SELECT SOCIAL ACCOUNTS
+            <label class="checkboxcontainer u-margin-bottom-small" for="page_select">TheWatchesland By Storesty
+              <input type="checkbox" id="page_select">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="form__text-box step2">Step 2 : SELECT THE TYPE OF POST YOU WANT TO PUBLISH&nbsp;</div>
+        </section>
+      </main>
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Add your Link <i class="fas fa-link"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Add your Images <i class="far fa-image"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Add your Videos <i class="fas fa-video"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-status-tab" data-toggle="pill" href="#pills-status" role="tab" aria-controls="pills-status" aria-selected="false">Add your Status <i class="far fa-smile-wink"></i></a>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+          <div class="forms__nav-input">
+            <span class="form__nav-input--text">
+              <span class="forms__nav-select">
+                <select name="time__select" id="time_select1">
+                  <option value="">Start Now</option>
+                  <option value="time">select other time</option>
+                </select>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">Tab2</div>
+        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">Tab3</div>
+        <div class="tab-pane fade" id="pills-status" role="tabpanel" aria-labelledby="pills-status-tab">Tab2</div>
+      </div>
+  </section>
+</div>

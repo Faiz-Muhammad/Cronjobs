@@ -21,6 +21,12 @@ class PagesController < ApplicationController
     end
   end
 
+  def destroy
+    @page = Page.find_by(id: params[:id])
+    @page.destroy
+    redirect_to pages_path
+  end
+
   private
   def pages_params(my_params)
     my_params.permit(:page_name, :fb_page_id, :page_access_token, :page_image)
