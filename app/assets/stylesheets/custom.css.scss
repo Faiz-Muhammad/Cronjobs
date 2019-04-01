@@ -26,7 +26,10 @@
   margin: 1rem;
 }
 
-
+.table-content {
+  display: table-cell;
+  column-count: 2;
+}
 
 
 // Testing

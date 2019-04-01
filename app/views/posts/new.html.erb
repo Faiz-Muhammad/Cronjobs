@@ -26,8 +26,10 @@
             </div>
         </section> -->
         <section class="btn-handler u-margin-bottom-small">
-          <a class="btns-white btns" href="#">Refresh Access Tokens</a>
-          <a class="btns-white btns" href="#">Manage Social Media Accounts</a>
+          <!-- <a class="btns-white btns" href="#">Refresh Access Tokens</a> -->
+          <!-- <a class="btns-white btns" href="#">Manage Social Media Accounts</a> -->
+          <!-- <%= link_to 'Refresh Access Tokens', user_facebook_omniauth_authorize_path, class: "btns btns-white" %> -->
+          <%= link_to "Manage Social Media Accounts", pages_path, class: "btns-white btns" %>
         </section>
         <section class="forms u-margin-bottom-small">
           <div class="forms__step1 u-margin-bottom-small">
@@ -45,10 +47,17 @@
           </div>
           <div class="form__text u-margin-bottom-small">
             SELECT SOCIAL ACCOUNTS
-            <label class="checkboxcontainer u-margin-bottom-small" for="page_select">TheWatchesland By Storesty
+            <!-- <label class="checkboxcontainer u-margin-bottom-small" for="page_select">TheWatchesland By Storesty
               <input type="checkbox" id="page_select">
               <span class="checkmark"></span>
-            </label>
+            </label> -->
+            <div class="table-content">
+              <% current_user.pages.each do |page| %>
+                <div>
+                  <%= image_tag((page.page_image), class: "img-circle") %>&nbsp; <%= page.page_name %>
+                </div>
+              <% end%>
+          </div>
           </div>
           <div class="form__text-box step2">Step 2 : SELECT THE TYPE OF POST YOU WANT TO PUBLISH&nbsp;</div>
         </section>
