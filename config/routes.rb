@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get '/myaccounts', to: 'pages#index'
   resources :pages
   resources :posts
+  
 end

@@ -1,0 +1,13 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <% @page_title = "MY POSTS" %>
+  <%= render 'layouts/page_header' %>
+
+  <!-- Main content -->
+  <section class="content">
+    <%= link_to "post on fb", post_video(@test_page, @post), class: "btn btn-primary" %>
+    <% @post.images.each do |image| %>
+      <%= image_tag(image) %>
+    <% end %>
+  </section>
+</div>

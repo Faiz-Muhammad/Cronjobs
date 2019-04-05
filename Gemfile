@@ -44,11 +44,15 @@ gem 'devise-bootstrap-views'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'koala'
 
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.3.1'
 # gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem 'font-awesome-rails'
 gem "bootstrap_form", ">= 4.2.0"
+gem 'rest-client', '~> 1.8'
+gem 'rails_db', '2.0.4'
+gem 'mini_magick', '~> 4.8'
 
 source 'https://rails-assets.org/' do
   gem 'rails-assets-adminlte'

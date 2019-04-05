@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_075953) do
+ActiveRecord::Schema.define(version: 2019_04_04_130705) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -53,23 +53,22 @@ ActiveRecord::Schema.define(version: 2019_04_01_075953) do
     t.integer "post_id"
     t.string "fb_post_id"
     t.datetime "scheduled_published_time"
-    t.string "post_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.datetime "delete_post_time"
     t.index ["page_id"], name: "index_pagesposts_on_page_id"
     t.index ["post_id"], name: "index_pagesposts_on_post_id"
+    t.index ["user_id"], name: "index_pagesposts_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
     t.text "description"
     t.string "link"
-    t.datetime "start_time"
-    t.integer "time_gap"
-    t.integer "delete_time"
-    t.integer "interval"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -101,10 +100,8 @@ ActiveRecord::Schema.define(version: 2019_04_01_075953) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone_number"
-    t.integer "pagesposts_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["pagesposts_id"], name: "index_users_on_pagesposts_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end

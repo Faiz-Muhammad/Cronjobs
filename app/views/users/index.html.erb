@@ -34,44 +34,20 @@
                     <%= f.hidden_field :last_name, autofocus: true, autocomplete: 'last name', class: 'form-control' %>
                     <%= f.hidden_field :phone_number, autofocus: true, autocomplete: 'phone number', class: 'form-control' %>
                     <%= f.hidden_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
-                      <% #debugger %>
-                      <% ind = 0 %>
+                    <% ind = 0 %>
                       <%= f.fields_for :pages do |p| %>
-                      <!-- <label class="checkboxcontainer" for="storesty"> -->
-
-                      <% if p.object.new_record?  %>
+                        <% if p.object.new_record?  %>
                           <label>
                             <%= p.check_box :checkbox_value %>
                             <%= image_tag((@pages[ind].page_image), class: "img-circle") %><%= @pages[ind].page_name %>
                             <% ind += 1 %>
                           </label>
-                        <!-- <img src="img/img.jpeg" alt="Profile Photo" class="pages__profile-img">Storesty -->
-
-                        <!-- <input type="checkbox" id="storesty" checked="checked">
-                        <span class="checkmark"></span> -->
-                      <!-- </label> -->
-                        <%= p.hidden_field :page_name %>
-                        <%= p.hidden_field :fb_page_id %>
-                        <%= p.hidden_field :page_access_token %>
-                        <%= p.hidden_field :page_image %>
+                          <%= p.hidden_field :page_name %>
+                          <%= p.hidden_field :fb_page_id %>
+                          <%= p.hidden_field :page_access_token %>
+                          <%= p.hidden_field :page_image %>
                         <% end %>
-
-                  <!-- <label class="checkboxcontainer" for="watchland">
-                    <img src="img/img.jpeg" alt="Profile Photo" class="pages__profile-img">TheWatchesLand
-                    <input type="checkbox" id="watchland">
-                    <span class="checkmark"></span>
-                  </label>
-                  <label class="checkboxcontainer" for="personalthoughts">
-                    <img src="img/img.jpeg" alt="Profile Photo" class="pages__profile-img">Personal thought
-                    <input type="checkbox" id="personalthoughts">
-                    <span class="checkmark"></span>
-                  </label>
-                  <label class="checkboxcontainer" for="13reason">
-                    <img src="img/img.jpeg" alt="Profile Photo" class="pages__profile-img">13 Reasons Why
-                    <input type="checkbox" id="13reason">
-                    <span class="checkmark"></span>
-                  </label> -->
-                    <% end %>
+                      <% end %>
                     <%= submit_tag %>
                   <% end %>
                 </div>

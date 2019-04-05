@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :pages, dependent: :destroy
-  has_many :pagesposts
-  has_many :posts, through: :pagesposts
+  has_many :pagesposts, dependent: :destroy
+  has_many :posts, dependent: :destroy 
 
   accepts_nested_attributes_for :pages, allow_destroy: true, reject_if: :all_blank
   attr_accessor :checkbox_value

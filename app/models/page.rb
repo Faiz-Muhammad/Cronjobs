@@ -1,6 +1,7 @@
 class Page < ApplicationRecord
   belongs_to :user
   has_many :pagesposts
+  has_many :posts, through: :pagespost 
 
 
 
