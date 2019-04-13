@@ -7,27 +7,7 @@
   <section class="content">
     <section class="container-main">
       <main>
-        <!-- <div class="topbar">
-          <h4 class="topbar__heading">ADD POSTS - SCHEDULE IN TWO SIMPLE STEPS</h4>
-          <span class="topbar__accounts"> Add Social Media Accounts
-            <button class="btn btn-social-icon btn-facebook">
-              <span class="fa fa-facebook"></span>
-            </button>
-          </span>
-        </div> -->
-        <!-- <section class="notification u-margin-bottom-small">
-          <div class="notification__container notification__simple">
-            <span class="notification__text">Pages saved successfully.</span>
-          </div>
-            <div class="notification__container notification__success">
-              <span class="notification__text">Your Trial Membership will expire in 28 days.
-                Click here to upgrade. Or Contact Us if you have any questions.
-              </span>
-            </div>
-        </section> -->
         <section class="btn-handler u-margin-bottom-small">
-          <!-- <a class="btns-white btns" href="#">Refresh Access Tokens</a> -->
-          <!-- <a class="btns-white btns" href="#">Manage Social Media Accounts</a> -->
           <!-- <%= link_to 'Refresh Access Tokens', user_facebook_omniauth_authorize_path, class: "btns btns-white" %> -->
           <%= link_to "Manage Social Media Accounts", pages_path, class: "btns-white btns" %>
         </section>
@@ -39,143 +19,169 @@
                 <input type="checkbox" id="checkall">
                 <span class="checkmark"></span>
               </label>
-               <label class="checkboxcontainer u-margin-bottom-small" for="pageimages">Load Page Images
-                 <input type="checkbox" id="pageimages">
-                 <span class="checkmark"></span>
-               </label>
-             </div>
+              <label class="checkboxcontainer u-margin-bottom-small" for="pageimages">Load Page Images
+                <input type="checkbox" id="pageimages">
+                <span class="checkmark"></span>
+              </label>
+            </div>
           </div>
           <div class="form__text u-margin-bottom-small">
             <h4>SELECT SOCIAL ACCOUNTS</h4>
-            <!-- <label class="checkboxcontainer u-margin-bottom-small" for="page_select">TheWatchesland By Storesty
-              <input type="checkbox" id="page_select">
-              <span class="checkmark"></span>
-            </label> -->
+
             <div class="table-content">
               <%= bootstrap_form_for(@post, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-                <table>
-                  <thead>
+                  <table>
+                    <thead>
                     <tr>
                       <th></th>
                     </tr>
-                  </thead>
-                  <tbody>
+                    </thead>
+                    <tbody>
                     <% current_user.pages.each do |page| %>
-                    <tr>
-                      <td><%= check_box_tag "page_ids[]", page.id %>&nbsp;<%= image_tag((page.page_image),class: "img-circle") %>&nbsp;<%= page.page_name %></td>
-                    </tr>
+                        <tr>
+                          <td><%= check_box_tag "page_ids[]", page.id %>&nbsp;<%= image_tag((page.page_image), class: "img-circle") %>&nbsp;<%= page.page_name %></td>
+                        </tr>
                     <% end %>
-                  </tbody>
-                </table>
-          </div>
-          </div>
-          <div class="form__text-box step2">Step 2 : SELECT THE TYPE OF POST YOU WANT TO PUBLISH&nbsp;</div>
-        </section>
-      </main>
-      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Add Link <i class="fas fa-link"></i></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Add Images <i class="far fa-image"></i></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Add Videos <i class="fas fa-video"></i></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="pills-status-tab" data-toggle="pill" href="#pills-status" role="tab" aria-controls="pills-status" aria-selected="false">Add Status <i class="far fa-smile-wink"></i></a>
-        </li>
-      </ul>
-      <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-          <section class="container content" align="center">
+                    </tbody>
+                  </table>
+                  </div>
+                  </div>
+                  <div class="form__text-box step2">Step 2 : SELECT THE TYPE OF POST YOU WANT TO PUBLISH&nbsp;</div>
+                  </section>
+                  </main>
+                  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Add
+                        Link <i class="fas fa-link"></i></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Add
+                        Images <i class="far fa-image"></i></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Add
+                        Videos <i class="fas fa-video"></i></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="pills-status-tab" data-toggle="pill" href="#pills-status" role="tab" aria-controls="pills-status" aria-selected="false">Add
+                        Status <i class="far fa-smile-wink"></i></a>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                      <section class="container content align--text">
 
-              <div>
-                <div class="form-group">
-                  <%= f.text_field :link, class: "form-control field-width" %>
-                </div>
-                <div class="form-group">
-                  <%= f.text_area :description, class: "form-control field-width" %>
-                </div>
+                        <div>
+                          <div class="form-group ">
+                            <%= f.text_field :link, class: "form-control field-width" %>
+                          </div>
+                          <div class="form-group">
+                            <%= f.text_area :description, class: "form-control field-width description--height" %>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <%= f.select :start_time, [['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                        </div>
+                        <div class="form-group">
+                          <%= f.select :interval, [['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                        </div>
+                        <div class="form-group">
+                          <%= f.select :time_gap, [['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                        </div>
+                        <div class="form-group">
+                          <%= f.select :delete_time, [['Never', 0], ['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                        </div>
+                        <div class="form-group">
+                          <%= submit_tag "create post", class: "btn btn-primary" %>
+                        </div>
+              <% end %>
+              </section>
               </div>
-              <div class="form-group">
-                <%= f.select :start_time, [['5 minutes', 5],['10 minutes', 10],['15 minutes', 15],['20 minutes(recomended)', 20]] %>
+              <div class="tab-pane " id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <section class="container content">
+                  <%= bootstrap_form_for(@post, :html => {class: "form-horizontal container", role: "form"}) do |f| %>
+                      <div>
+                        <div class="form-group">
+                          <%= f.file_field :images, multiple: true, class: "form-control field-width" %>
+                        </div>
+
+                        <div class="form-group">
+                          <%= f.text_area :description, class: "form-control field-width description--height" %>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <%= f.select :start_time, [['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.select :interval, [['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.select :time_gap, [['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.select :delete_time, [['Never', 0], ['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                      </div>
+                      <div class="form-group">
+                        <%= submit_tag "create post", class: "btn btn-primary" %>
+                      </div>
+                  <% end %>
+                </section>
               </div>
-              <div class="form-group">
-                <%= f.select :interval, [['5 minutes', 5],['10 minutes', 10],['15 minutes', 15],['20 minutes(recomended)', 20]] %>
+              <div class="tab-pane " id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <section class="container content">
+                  <%= bootstrap_form_for(@post, :html => {class: "form-horizontal container", role: "form"}) do |f| %>
+                      <div>
+                        <div class="form-group">
+                          <%= f.file_field :images, multiple: true, class: "form-control field-width" %>
+                        </div>
+                        <div class="form-group">
+                          <%= f.text_area :description, class: "form-control field-width description--height" %>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <%= f.select :start_time, [['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.select :interval, [['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.select :time_gap, [['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.select :delete_time, [['Never', 0], ['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                      </div>
+                      <div class="form-group">
+                        <%= submit_tag "create post", class: "btn btn-primary" %>
+                      </div>
+                  <% end %>
+                </section>
               </div>
-              <div class="form-group">
-                <%= f.select :time_gap, [['5 minutes', 5],['10 minutes', 10],['15 minutes', 15],['20 minutes(recomended)', 20]] %>
+              <div class="tab-pane" id="pills-status" role="tabpanel" aria-labelledby="pills-status-tab">
+                <section class="container content">
+                  <%= bootstrap_form_for(@post, :html => {class: "form-horizontal container", role: "form"}) do |f| %>
+
+                      <div class="form-group">
+                        <%= f.text_area :description, class: "form-control field-width description--height" %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.select :start_time, [['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.select :interval, [['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.select :time_gap, [['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.select :delete_time, [['Never', 0], ['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                      </div>
+                      <div class="form-group">
+                        <%= submit_tag " post", class: "btn btn-primary" %>
+                      </div>
+                  <% end %>
+                </section>
               </div>
-              <div class="form-group">
-                <%= f.select :delete_time, [['Never', 0],['5 minutes', 5],['10 minutes', 10],['15 minutes', 15],['20 minutes(recomended)', 20]] %>
               </div>
-              <div class="form-group">
-                <%= submit_tag "create post", class: "btn btn-primary" %>
-              </div>
-           <% end %>
-          </section>
-        </div>
-        <div class="tab-pane " id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-          <section class="container content" align="center">
-           <%= bootstrap_form_for(@post, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-              <div>
-                <div class="form-group">
-                  <%= f.file_field :images, multiple: true, class: "form-control field-width" %>
-                </div>
-                <div class="form-group">
-                  <%= f.text_area :description, class: "form-control field-width" %>
-                </div>
-              </div>
-              <div class="form-group">
-                <%= f.select :start_time, [['5 minutes', 5],['10 minutes', 10],['15 minutes', 15],['20 minutes(recomended)', 20]] %>
-              </div>
-              <div class="form-group">
-                <%= f.select :interval, [['5 minutes', 5],['10 minutes', 10],['15 minutes', 15],['20 minutes(recomended)', 20]] %>
-              </div>
-              <div class="form-group">
-                <%= f.select :time_gap, [['5 minutes', 5],['10 minutes', 10],['15 minutes', 15],['20 minutes(recomended)', 20]] %>
-              </div>
-              <div class="form-group">
-                <%= f.select :delete_time, [['Never', 0],['5 minutes', 5],['10 minutes', 10],['15 minutes', 15],['20 minutes(recomended)', 20]] %>
-              </div>
-              <div class="form-group">
-                <%= submit_tag "create post", class: "btn btn-primary" %>
-              </div>
-           <% end %>
-          </section>
-        </div>
-        <div class="tab-pane " id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-          <section class="container content" align="center">
-           <%= bootstrap_form_for(@post, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-              <div>
-                <div class="form-group">
-                  <%= f.file_field :images, multiple: true, class: "form-control field-width" %>
-                </div>
-                <div class="form-group">
-                  <%= f.text_area :description, class: "form-control field-width" %>
-                </div>
-              </div>
-              <div class="form-group">
-                <%= f.select :start_time, [['5 minutes', 5],['10 minutes', 10],['15 minutes', 15],['20 minutes(recomended)', 20]] %>
-              </div>
-              <div class="form-group">
-                <%= f.select :interval, [['5 minutes', 5],['10 minutes', 10],['15 minutes', 15],['20 minutes(recomended)', 20]] %>
-              </div>
-              <div class="form-group">
-                <%= f.select :time_gap, [['5 minutes', 5],['10 minutes', 10],['15 minutes', 15],['20 minutes(recomended)', 20]] %>
-              </div>
-              <div class="form-group">
-                <%= f.select :delete_time, [['Never', 0],['5 minutes', 5],['10 minutes', 10],['15 minutes', 15],['20 minutes(recomended)', 20]] %>
-              </div>
-              <div class="form-group">
-                <%= submit_tag "create post", class: "btn btn-primary" %>
-              </div>
-           <% end %>
-          </section>
-        </div>
-        <div class="tab-pane fade" id="pills-status" role="tabpanel" aria-labelledby="pills-status-tab">Tab2</div>
-      </div>
-    </section>
+              </section>
   </section>
 </div>

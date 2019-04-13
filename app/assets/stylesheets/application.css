@@ -20,3 +20,17 @@
  *= require_tree .
  *= require_self
  */
+.align--text
+{
+    text-align: left;
+}
+.box--height
+{
+    width: 50%;
+    height: 28px ;
+}
+
+.description--height
+{
+    height: 90px !important;
+}

@@ -15,9 +15,9 @@
     </div>
 
     <% if devise_mapping.rememberable? %>
-      <div class="form-group form-check">
-        <%= f.check_box :remember_me, class: 'form-check-input' %>
-        <%= f.label :remember_me, class: 'form-check-label' do %>
+      <div class="form-group form-check" >
+        <%= f.check_box :remember_me, class: 'form-check-input'%>
+        <%= f.label :remember_me, class: 'form-check-label', style:"margin-left: 17px;" do %>
           <%= resource.class.human_attribute_name('remember_me') %>
         <% end %>
       </div>
