@@ -37,9 +37,9 @@
                     <% ind = 0 %>
                       <%= f.fields_for :pages do |p| %>
                         <% if p.object.new_record?  %>
-                          <label>
-                            <%= p.check_box :checkbox_value %>
-                            <%= image_tag((@pages[ind].page_image), class: "img-circle") %><%= @pages[ind].page_name %>
+                          <label style="margin-left:20px;margin-top:10px">
+                            <%= p.check_box :checkbox_value , style:"margin-left: -20px" %>
+                            <%= image_tag((@pages[ind].page_image), class: "img-circle",style:"margin-top:7px;margin-right:6px")%><%= @pages[ind].page_name %>
                             <% ind += 1 %>
                           </label>
                           <%= p.hidden_field :page_name %>
@@ -48,7 +48,7 @@
                           <%= p.hidden_field :page_image %>
                         <% end %>
                       <% end %>
-                    <%= submit_tag %>
+                    <%= submit_tag "Save Pages",style:"display:flex;margin-top:25px; margin-left:20px"%>
                   <% end %>
                 </div>
               </div>
@@ -67,7 +67,6 @@
             <% end %>
           </section>
         </section>
-      </section>
     </main>
   </section>
 </div>

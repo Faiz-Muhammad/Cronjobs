@@ -43,6 +43,7 @@ gem 'devise-i18n'
 gem 'devise-bootstrap-views'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'koala'
+gem 'pry'
 
 # gem 'bootstrap-sass'
 gem 'bootstrap', '~> 4.3.1'
