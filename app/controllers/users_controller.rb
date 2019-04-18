@@ -30,11 +30,16 @@ class UsersController < ApplicationController
     update_params = Hash.new
     i = 0
     user_params[:pages_attributes].each do |page|
+
+     duplication = Page.where(fb_page_id: page[1]['fb_page_id']) #check the duplication of data in DB and store if not present
+     unless duplication.present?
       if page[1][:checkbox_value].to_i != 0
         update_params.merge!("#{i}" => page[1].to_h)
         i += 1
       end
+     end
     end
+
     new_params = user_params.except(:pages_attributes)
     new_params.merge!("pages_attributes" => update_params)
     if current_user.update!(new_params)
