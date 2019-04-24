@@ -20,6 +20,9 @@
  *= require_tree .
  *= require_self
  */
+body{
+    font-size: 15px !important;
+ }
 .align--text
 {
     text-align: left;

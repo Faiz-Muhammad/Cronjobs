@@ -296,7 +296,7 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
-
-  config.omniauth :facebook, "2072177726231124", "fdb25b54da1dfdff606fc02ece1f8fa5", scope: "email, pages_show_list", callback_url: "http://localhost:3000/users/auth/facebook/callback"
+   Koala.config.api_version = "v2.0"
+  config.omniauth :facebook, "1615814592055298", "aae2317ff837d56d0a9bb0a566f9403c", scope: "email, pages_show_list, manage_pages, publish_pages", callback_url: "http://localhost:3000/users/auth/facebook/callback"
 
 end

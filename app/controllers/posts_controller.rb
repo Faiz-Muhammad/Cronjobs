@@ -14,22 +14,16 @@ class PostsController < ApplicationController
       @pages << Page.find_by(id: page.to_i)
     end
 
-    # link.each_with_index do |l,index|
-    #   post_new_params = Hash.new
-    # post_new_params.merge!({"link" => "#{params["post"]['link']}", "description" => "#{params["post"]['description']}"})
-
     @post = current_user.posts.create(post_params)
     calculate_posting_time(params["post"]['start_time'], params["post"]['interval'], params["post"]['time_gap'], params["post"]['delete_time'], @post, @pages)
 
-    flash[:success] = "Post has been created!"
+    @pages.each do |page|
+      retured_post_id = Pagespost.post_pictures(page, @post)
+      @pagespost = current_user.pagesposts.where(page_id: page.id, post_id: @post.id)
+      @pagespost.update(fb_post_id: retured_post_id["id"])
+    end
+    flash[:success] = "Post has been posted!"
     redirect_to root_path
-    # post_status(@pages, @post)
-    # end
-    # @post = Post.new(post_params)
-    # @post.user = current_user
-    # @post.save
-    # flash[:success] = "Post has been created!"
-    # redirect_to pages_path
   end
 
 
@@ -37,6 +31,8 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:start_time, :interval, :delete_time, :time_gap, :user_id, :video, :link, :description, images: [], page_ids: [])
   end
+
+
 
   def calculate_posting_time(start_time, interval, time_gap, delete_time, post, pages)
     scheduled_publish_time = Time.now
@@ -47,6 +43,7 @@ class PostsController < ApplicationController
         scheduled_publish_time += (interval.to_i)*60
       end
       scheduled_publish_time += (start_time.to_i)*60 + (time_gap.to_i)*60
+
       unless delete_time.to_i == 0
         delete_post_time = scheduled_publish_time + (delete_time.to_i)*60
       else
