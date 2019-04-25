@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @pages.each do |page|
       retured_post_id = Pagespost.post_status(page, @post)
       @pagespost = current_user.pagesposts.where(page_id: page.id, post_id: @post.id)
-      @pagespost.update(fb_post_id: retured_post_id["id"])
+      @pagespost.update(fb_post_id: retured_post_id["id"], published_status: true)
     end
     flash[:success] = "Post has been posted!"
     redirect_to root_path
