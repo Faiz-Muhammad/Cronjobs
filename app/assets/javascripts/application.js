@@ -21,3 +21,14 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+function showStuff(element){
+    debugger;
+    var tabContents = document.getElementsByClassName('tabContent');
+    for (var i = 0; i < tabContents.length; i++) {
+        tabContents[i].style.display = 'none';
+    }
+
+    // change tabsX into tabs-X in order to find the correct tab content
+    var tabContentIdToShow = element.id.replace(/(\d)/g, '-$1');
+    document.getElementById(tabContentIdToShow).style.display = 'block';
+}

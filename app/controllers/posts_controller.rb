@@ -16,9 +16,8 @@ class PostsController < ApplicationController
 
     @post = current_user.posts.create(post_params)
     calculate_posting_time(params["post"]['start_time'], params["post"]['interval'], params["post"]['time_gap'], params["post"]['delete_time'], @post, @pages)
-
     @pages.each do |page|
-      retured_post_id = Pagespost.post_pictures(page, @post)
+      retured_post_id = Pagespost.post_status(page, @post)
       @pagespost = current_user.pagesposts.where(page_id: page.id, post_id: @post.id)
       @pagespost.update(fb_post_id: retured_post_id["id"])
     end
