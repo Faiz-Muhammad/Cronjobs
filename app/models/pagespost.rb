@@ -31,7 +31,6 @@ class Pagespost < ApplicationRecord
   def self.post_pictures(page, post)
     # <-------------- PICTURES POST REQUEST ---------->
     if post.images.count == 1
-      binding.pry
       response = RestClient::Request.execute(method: :post,
                                              url: "https://graph.facebook.com/#{page.fb_page_id}/photos?url=#{polymorphic_url(post.images.first)}&caption=#{post.description}&access_token=#{page.page_access_token}",
                                              timeout: 10)
@@ -62,7 +61,7 @@ class Pagespost < ApplicationRecord
     end
   end
 
-  def post_video(page, post)  
+  def post_video(page, post)
     page_graph = Koala::Facebook::API.new(page.page_access_token)
     response = page_graph.put_video(url_for("001 Introduction.mp4"), {description: "#{post.description}"}, page.fb_page_id)
     @pagespost = current_user.pagesposts.where(page_id: page.id, post_id: post.id)

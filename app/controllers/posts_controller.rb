@@ -13,7 +13,6 @@ class PostsController < ApplicationController
     params["page_ids"].each do |page|
       @pages << Page.find_by(id: page.to_i)
     end
-
     @post = current_user.posts.create(post_params)
     calculate_posting_time(params["post"]['start_time'], params["post"]['interval'], params["post"]['time_gap'], params["post"]['delete_time'], @post, @pages)
     @pages.each do |page|
