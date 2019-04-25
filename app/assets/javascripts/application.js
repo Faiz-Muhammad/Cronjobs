@@ -22,7 +22,7 @@
 //= require turbolinks
 //= require_tree .
 function showStuff(element){
-    var tabContents = document.getElementsByClassName('tabContent');
+        var tabContents = document.getElementsByClassName('tabContent');
     for (var i = 0; i < tabContents.length; i++) {
         tabContents[i].style.display = 'none';
     }
