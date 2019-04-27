@@ -73,7 +73,7 @@
                         <!-- Foam for URL-->
                         <div id="tabs-1" class="tabContent">
                           <div class="form-group" style=" width: 50%">
-                            <%= f.file_field :images, multiple: true, class: "form-control " %>
+                            <%= f.file_field :video, class: "form-control " %>
                           </div>
                         </div>
                         <div id="tabs-2" class="tabContent">
@@ -83,20 +83,20 @@
                         </div>
                         <div id="tabs-4" class="tabContent">
                           <div class="form-group ">
-                            <%= f.text_field :link, class: "form-control field-width" %>
+                            <%= f.text_field :link, class: "form-control field-width box--height" %>
                           </div>
                         </div>
                         <div class="form-group">
                           <%= f.text_area :description, class: "form-control field-width description--height" %>
                         </div>
                         <div class="form-group">
-                          <%= f.select :start_time, [['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                          <%= f.select :start_time, [['1 minutes', 1], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
                         </div>
                         <div class="form-group">
-                          <%= f.select :interval, [['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                          <%= f.select :interval, [['1 minutes', 1], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
                         </div>
                         <div class="form-group">
-                          <%= f.select :time_gap, [['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                          <%= f.select :time_gap, [['1 minutes', 1], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
                         </div>
                         <div class="form-group">
                           <%= f.select :delete_time, [['Never', 0], ['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>

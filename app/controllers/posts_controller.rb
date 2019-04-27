@@ -15,15 +15,11 @@ class PostsController < ApplicationController
     end
     @post = current_user.posts.create(post_params)
     calculate_posting_time(params["post"]['start_time'], params["post"]['interval'], params["post"]['time_gap'], params["post"]['delete_time'], @post, @pages)
-    @pages.each do |page|
-      # retured_post_id = PostDelayjobJob.perform_now.post_status(page, @post)
-      # @pagespost = current_user.pagesposts.where(page_id: page.id, post_id: @post.id)
-      # @pagespost.update(fb_post_id: retured_post_id["id"], published_status: true)
-    end
-    flash[:success] = "Post has been posted!"
+
+
+    flash[:success] = "Post has been created and will post on page according to time!"
     redirect_to root_path
   end
-
 
   private
   def post_params
