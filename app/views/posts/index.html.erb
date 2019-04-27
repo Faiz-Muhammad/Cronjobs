@@ -1,13 +1,51 @@
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
-  <% @page_title = "MY POSTS" %>
+  <% @page_title = "My Posts" %>
   <%= render 'layouts/page_header' %>
 
   <!-- Main content -->
   <section class="content">
-    <%= link_to "post on fb", post_video(@test_page, @post), class: "btn btn-primary" %>
-    <% @post.images.each do |image| %>
-      <%= image_tag(image) %>
+    <% if current_user.posts.count != 0 %>
+        <div class="row table-border ">
+          <!-- <div class="col-md-6"> -->
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Accounts</h3>
+              <div class="pull-right">
+                <!-- <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body"> -->
+                <!-- <i class="glyphicon glyphicon-filter"></i> -->
+                <!-- </span> -->
+              </div>
+            </div>
+            <div class="panel-body">
+              <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Developers" />
+            </div>
+            <table class="table table-hover" id="dev-table">
+              <thead>
+              <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Link</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @posts.each do|post|  %>
+                  <tr>
+                    <td><%= post.id %></td>
+                    <td><%= post.description %></td>
+                    <td><%= post.link %></td>
+                    <td></td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+    <% else %>
+        <h5> You don't have saved pages. Please import pages from facebook to get started.</h5>
+        <%= link_to "Import Pages", users_path %>
     <% end %>
   </section>
 </div>

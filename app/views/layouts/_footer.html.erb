@@ -3,8 +3,10 @@
     <p> Time Now: <%= Time.now.strftime("%I:%M %p") %></p>
     <p> <%= Time.now.strftime("%A") %>, <%= Time.now.strftime("%b %d, %Y") %> </p>
   </div>
-  <p><%= link_to "Home", root_path %> <%= link_to "Privacy Policy", root_path %>
-    <%= link_to "Terms & Conditions", root_path %> <%= link_to "FAQs", root_path %>
-    <%= link_to "Payment Options", root_path %></p>
+  <p><%= link_to "Home", root_path %>
+    <%= link_to "Privacy Policy", privacy_policy_path %>
+    <%= link_to "Terms & Conditions", terms_condition_path %>
+    <%= link_to "FAQs", faqs_path %>
+    <%= link_to "Payment Options", payment_options_path %></p>
   <strong>&copy; Viral Square </strong>
 </footer>
