@@ -16,9 +16,22 @@ class PostsController < ApplicationController
     @post = current_user.posts.create(post_params)
     calculate_posting_time(params["post"]['start_time'], params["post"]['interval'], params["post"]['time_gap'], params["post"]['delete_time'], @post, @pages)
 
-
     flash[:success] = "Post has been created and will post on page according to time!"
     redirect_to root_path
+  end
+
+
+  def destroy
+    binding.pry
+    pagespost = Pagespost.where(post_id: params[:id])
+    pagespost.each do |pagepost|
+      deleted_responce = Pagespost.delete_post(pagepost.page, pagepost.post)
+      if deleted_responce['success']
+        pagepost.update(deleted_status:true)
+        flash[:success] = "Post is deleted successfully"
+        redirect_to posts_path
+      end
+    end
   end
 
   private

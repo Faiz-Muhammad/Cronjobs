@@ -6,7 +6,7 @@
   <!-- Main content -->
   <section class="content">
     <% if current_user.pages.count != 0 %>
-      <div class="row table-border ">
+      <div class="row table-border " style="display:block !important">
 			<!-- <div class="col-md-6"> -->
 				<div class="panel panel-primary">
 					<div class="panel-heading">
@@ -16,9 +16,6 @@
 								<!-- <i class="glyphicon glyphicon-filter"></i> -->
 							<!-- </span> -->
 						</div>
-					</div>
-					<div class="panel-body">
-						<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Developers" />
 					</div>
 					<table class="table table-hover" id="dev-table">
 						<thead>

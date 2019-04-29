@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :except => [:privacy_policy,:terms_condition,:faqs,:payment_options, :home]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
     protected

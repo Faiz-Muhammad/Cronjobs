@@ -6,36 +6,64 @@
   <!-- Main content -->
   <section class="content">
     <% if current_user.posts.count != 0 %>
-        <div class="row table-border ">
+        <div class="row table-border " style="display:block !important">
           <!-- <div class="col-md-6"> -->
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h3 class="panel-title">Accounts</h3>
-              <div class="pull-right">
-                <!-- <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body"> -->
-                <!-- <i class="glyphicon glyphicon-filter"></i> -->
-                <!-- </span> -->
-              </div>
-            </div>
-            <div class="panel-body">
-              <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Developers" />
+              <h3 class="panel-title">Posts</h3>
             </div>
             <table class="table table-hover" id="dev-table">
               <thead>
               <tr>
                 <th></th>
-                <th>ID</th>
-                <th>Description</th>
-                <th>Link</th>
+                <th>Type</th>
+                <th>Post</th>
+                <th>Status</th>
+                <th>Starting Time</th>
+                <th>Deleting Time</th>
+                <th>Delete</th>
               </tr>
               </thead>
               <tbody>
-              <% @posts.each do|post|  %>
+              <% @posts.each do |post| %>
                   <tr>
-                    <td><%= post.id %></td>
-                    <td><%= post.description %></td>
-                    <td><%= post.link %></td>
                     <td></td>
+                    <% if post.images.attached? %>
+                        <td>Image</td>
+                        <td><%= image_tag((post.images.first.service_url),class: "user-image") %></td>
+                    <% elsif post.video.attached? %>
+                        <td>Video</td>
+                        <td><%= truncate(post.description,lenght:65) %></td>
+                    <% elsif post.link.present? %>
+                        <td>Link</td>
+                        <td><%= link_to post.link, "https://#{post.link}", target: :_blank %></td>
+
+                  <% else %>
+                        <td>Status</td>
+                        <td><%= truncate(post.description,lenght:65) %></td>
+                    <% end %>
+                    <% page = Pagespost.find_by(post_id: post.id) %>
+                    <% if page.published_status %>
+                        <td><strong> Posted</strong></td>
+                    <% else %>
+                        <td>Pending</td>
+                    <% end %>
+                    <td> <%= page.scheduled_published_time.strftime("%Y-%m-%d %H:%M") %></td>
+                    <% if page.delete_post_time.nil? %>
+                        <td> Time not set</td>
+                    <% else %>
+                        <td> <%= page.delete_post_time.strftime("%Y-%m-%d %H:%M") %></td>
+                    <% end %>
+                    <% if page.published_status %>
+                        <% if page.deleted_status %>
+                            <td><strong>Deleted</strong></td>
+                        <% else %>
+                            <td><%= link_to "", post_path(post), method: :delete, class: "btn btn-danger btn-xs glyphicon glyphicon-trash",
+                                            data: {confirm: "Are you sure you want to delete this record?"} %></td>
+                        <% end %>
+                    <% else %>
+                        <td> Not Published</td>
+                    <% end %>
                   </tr>
               <% end %>
               </tbody>
@@ -49,3 +77,4 @@
     <% end %>
   </section>
 </div>
+

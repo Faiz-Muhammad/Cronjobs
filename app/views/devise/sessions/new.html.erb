@@ -1,8 +1,9 @@
-<div class="content-wrapper">
+<div class="content-wrapper" style="margin-left:0 ">
   <% @page_title = "Sign In" %>
-  <%= render 'layouts/page_header' %>
+  <%#S= render 'layouts/page_header' %>
 <!-- <h1><%= t('.sign_in') %></h1> -->
-  <section class="content" align="center">
+  <section class="content" align="left" style="width: 50%;">
+    <h1>Sign In</h1>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">
       <%= f.label :email %>

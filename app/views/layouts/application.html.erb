@@ -15,10 +15,12 @@
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
+<% if user_signed_in?%>
 
-      <%= render 'layouts/navigation'%>
       <!-- Left side column. contains the logo and sidebar -->
-      <%= render 'layouts/sidebar' %>
+          <%= render 'layouts/sidebar' %>
+      <% end%>
+      <%= render 'layouts/navigation'%>
 
       <!-- Content Wrapper. Contains page content -->
 
@@ -27,7 +29,6 @@
       <!-- /.content-wrapper -->
 
       <%= render 'layouts/footer' %>
-
 
     </div>
   </body>

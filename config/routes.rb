@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :pages
   resources :posts
 
+  get '/home', to: 'static#home'
   get '/privacy_policy', to: 'static#privacy_policy'
   get '/terms_condition', to: 'static#terms_condition'
   get '/faqs', to: 'static#faqs'

@@ -112,16 +112,22 @@ class Pagespost < ApplicationRecord
     return res
   end
 
-  def delete_post(page, post)
+  def self.delete_post(page, post)
     # <--------------POST DELETE  REQUEST ---------->
-    response = RestClient::Request.execute(method: :delete,
-                                           url: "https://graph.facebook.com/#{page.fb_page_id}/#{post.pagesposts.fb_post_id}?&access_token=#{page.page_access_token}",
-                                           timeout: 10)
-    if response["success"]
-      flash[:success] = "Post has been deleted successfully!"
-    else
-      flash[:danger] = "There is something wrong with deletion of this post!"
-    end
+    fb_post_id = Pagespost.find_by(page_id: page.id,post_id: post.id, published_status:true).fb_post_id
+    page_access_token = page.page_access_token
+
+    uri = URI.parse("https://graph.facebook.com/#{fb_post_id}")
+    uri.query = URI.encode_www_form(
+        'access_token' => page_access_token
+    )
+    request_uri= uri.to_s
+    res = RestClient::Request.execute(method: :delete,
+                                      url: request_uri,
+                                      timeout: 10)
+    retured_res = JSON.parse(res)
+    return retured_res
+
   end
 
 end
