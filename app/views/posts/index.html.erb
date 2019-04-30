@@ -1,10 +1,11 @@
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
-  <% @page_title = "My Posts" %>
+
+  <h1 class="header1--padding">My Posts</h1>
   <%= render 'layouts/page_header' %>
 
   <!-- Main content -->
-  <section class="content">
+  <section class="content ">
     <% if current_user.posts.count != 0 %>
         <div class="row table-border " style="display:block !important">
           <!-- <div class="col-md-6"> -->
@@ -12,6 +13,7 @@
             <div class="panel-heading">
               <h3 class="panel-title">Posts</h3>
             </div>
+            <div class="table-responsive">
             <table class="table table-hover" id="dev-table">
               <thead>
               <tr>
@@ -30,17 +32,16 @@
                     <td></td>
                     <% if post.images.attached? %>
                         <td>Image</td>
-                        <td><%= image_tag((post.images.first.service_url),class: "user-image") %></td>
+                        <td><%= image_tag((post.images.first.service_url), class: "user-image image--size ") %></td>
                     <% elsif post.video.attached? %>
                         <td>Video</td>
-                        <td><%= truncate(post.description,lenght:65) %></td>
+                        <td><%= post.description.truncate(27) %></td>
                     <% elsif post.link.present? %>
                         <td>Link</td>
-                        <td><%= link_to post.link, "https://#{post.link}", target: :_blank %></td>
-
+                        <td><%= link_to post.link.truncate(27), "https://#{post.link}", target: :_blank %></td>
                   <% else %>
                         <td>Status</td>
-                        <td><%= truncate(post.description,lenght:65) %></td>
+                        <td><%= post.description.truncate(27) %></td>
                     <% end %>
                     <% page = Pagespost.find_by(post_id: post.id) %>
                     <% if page.published_status %>
@@ -68,6 +69,7 @@
               <% end %>
               </tbody>
             </table>
+            </div>
           </div>
         </div>
 
@@ -77,4 +79,3 @@
     <% end %>
   </section>
 </div>
-

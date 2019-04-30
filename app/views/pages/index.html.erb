@@ -1,6 +1,6 @@
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
-  <% @page_title = "My Social Accounts" %>
+  <h1 class="header1--padding">My Social Accounts</h1>
   <%= render 'layouts/page_header' %>
 
   <!-- Main content -->
@@ -17,6 +17,7 @@
 							<!-- </span> -->
 						</div>
 					</div>
+          <div class="table-responsive">
 					<table class="table table-hover" id="dev-table">
 						<thead>
 							<tr>
@@ -30,15 +31,16 @@
               <% current_user.pages.each do |page|  %>
 							<tr>
                 <td></td>
-								<td><%= image_tag(("https://graph.facebook.com/v2.12/#{page.fb_page_id}/picture?access_token=#{page.page_access_token}&width=50&height=50"),
-                class: "user-image") %>  <%= page.page_name %></td>
-								<td><%= link_to "#{page.page_name}", "https://www.facebook.com/#{page.fb_page_id}/", target: :_blank %></td>
+								<td class="screen--percentage"><%= image_tag(("https://graph.facebook.com/v2.12/#{page.fb_page_id}/picture?access_token=#{page.page_access_token}&width=50&height=50"),
+                class: " image--size user-image") %>  <%= page.page_name.truncate(15) %></td>
+								<td><%= link_to page.page_name.truncate(25), "https://www.facebook.com/#{page.fb_page_id}/", target: :_blank %></td>
 								<td><%= link_to "", page_path(page), method: :delete, class:"btn btn-danger btn-xs glyphicon glyphicon-trash",
                  data: {confirm: "Are you sure you want to delete this record?"} %></td>
 							</tr>
               <% end %>
 						</tbody>
 					</table>
+          </div>
 				</div>
 			</div>
 

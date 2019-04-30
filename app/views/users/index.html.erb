@@ -1,6 +1,6 @@
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
-  <% @page_title = "My Facebook Pages" %>
+  <h1 class="header1--padding">My Facebook Pages</h1>
   <%= render 'layouts/page_header' %>
   <!-- Main content -->
   <section class="content">
@@ -8,8 +8,8 @@
       <section class="maincontainer">
         <!-- <div class="pageheaderTop"><h2 class="pageheaderTop__heading">My Facebook Pages</h2> -->
           <!-- </div> -->
-            <section class="notification">
-              <div class="notification__container notification__simple"> <span class="notification__text">You can only import pages that you are admin of.</span></div>
+            <section class="notification main--padding">
+              <div class="notification__container notification__simple"> <span class="notification__text ">You can only import pages that you are admin of.</span></div>
               <!-- <div class="notification__container notification__warning"> <span class="notification__text">
               </span>Warning:You can import 5 facebook accounts. To increase limit please upgrade your membership</span>
               </div> -->
@@ -60,8 +60,8 @@
                   <span class="checkmark"></span>
                 </label>
               </div> -->
-              <div class="notification__container notification__simple">
-                <h5><span class="notification__text">Your all pages have already been added.</span></h5>
+              <div class="notification__container notification__simple main--padding">
+                <h5><span class="notification__text ">Your all pages have already been added.</span></h5>
               </div>
             </section>
             <% end %>

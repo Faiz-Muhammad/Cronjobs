@@ -22,16 +22,15 @@ class PostsController < ApplicationController
 
 
   def destroy
-    binding.pry
     pagespost = Pagespost.where(post_id: params[:id])
     pagespost.each do |pagepost|
       deleted_responce = Pagespost.delete_post(pagepost.page, pagepost.post)
       if deleted_responce['success']
         pagepost.update(deleted_status:true)
-        flash[:success] = "Post is deleted successfully"
-        redirect_to posts_path
       end
     end
+    flash[:success] = "Post deleted successfully"
+    redirect_to posts_path
   end
 
   private
@@ -47,12 +46,12 @@ class PostsController < ApplicationController
     pagespost_params = Hash.new
     pages.each_with_index do |page, index|
       if index != 0
-        scheduled_publish_time += (interval.to_i)*60
+        scheduled_publish_time += (interval.to_f)*60
       end
-      scheduled_publish_time += (start_time.to_i)*60 + (time_gap.to_i)*60
+      scheduled_publish_time += (start_time.to_f)*60 + (time_gap.to_f)*60
 
-      unless delete_time.to_i == 0
-        delete_post_time = scheduled_publish_time + (delete_time.to_i)*60
+      unless delete_time.to_f == 0
+        delete_post_time = scheduled_publish_time + (delete_time.to_f)*60
       else
         delete_post_time = 0
       end

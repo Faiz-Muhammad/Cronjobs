@@ -1,113 +1,140 @@
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
-  <% @page_title = "ADD POSTS - SCHEDULE IN TWO SIMPLE STEPS" %>
+  <%# @page_title = "ADD POSTS - SCHEDULE IN TWO SIMPLE STEPS" %>
+  <h1 class="header1--padding">ADD POSTS - SCHEDULE IN TWO SIMPLE STEPS</h1>
   <%= render 'layouts/page_header' %>
 
   <!-- Main content -->
-  <section class="content">
-    <section class="container-main">
+  <section class="content main--padding">
+    <section class="container-main ">
       <main>
-        <section class="btn-handler u-margin-bottom-small">
-          <!-- <%= link_to 'Refresh Access Tokens', user_facebook_omniauth_authorize_path, class: "btns btns-white" %> -->
-          <%= link_to "Manage Social Media Accounts", pages_path, class: "btns-white btns" %>
-        </section>
-        <section class="forms u-margin-bottom-small">
+        <!--<section class="btn-handler u-margin-bottom-small" >-->
+          <!--&lt;!&ndash; <%#= link_to 'Refresh Access Tokens', user_facebook_omniauth_authorize_path, class: "btns btns-white" %> &ndash;&gt;-->
+          <!--<%#= link_to "Manage Social Media Accounts", pages_path, class: "btns-white btns" %>-->
+        <!--</section>-->
+        <section class="forms u-margin-bottom-small section--overflow">
           <div class="forms__step1 u-margin-bottom-small">
-            <div class="form__text-box">Step 1 : Select from Pages or Categories where you want to publish&nbsp;</div>
+            <div class="form__text-box step2 margin--line">Step 1 : Select from Pages or Categories where you want to publish&nbsp;</div>
             <div class="checkboxescon">
-              <label class="checkboxcontainer u-margin-bottom-small" for="checkall">Select all
-                <input type="checkbox" id="checkall">
+              <label class="checkboxcontainer u-margin-bottom-small " >Select all
+                <input type="checkbox" checked id="checkAll">
                 <span class="checkmark"></span>
               </label>
-              <label class="checkboxcontainer u-margin-bottom-small" for="pageimages">Load Page Images
-                <input type="checkbox" id="pageimages">
-                <span class="checkmark"></span>
-              </label>
+              <!--<label class="checkboxcontainer u-margin-bottom-small" for="pageimages">Load Page Images-->
+                <!--<input type="checkbox" id="pageimages">-->
+              <!--</label>-->
             </div>
           </div>
+
           <div class="form__text u-margin-bottom-small">
             <h4>SELECT SOCIAL ACCOUNTS</h4>
 
-            <div class="table-content">
-              <%= bootstrap_form_for(@post, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-                  <table>
+            <div class="" >
+              <%= bootstrap_form_for(@post, :html => {class: "form-horizontal table--scroll", role: "form"}) do |f| %>
+                  <table class=" table-responsive column--count" >
                     <thead>
-                    <tr>
-                      <th></th>
-                    </tr>
-                    </thead>
+                    <!--<tr class="success">-->
+                      <!--<th>Checked</th>-->
+                      <!--<th class="row&#45;&#45;padding">Name</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
                     <tbody>
                     <% current_user.pages.each do |page| %>
                         <tr>
-                          <td><%= check_box_tag "page_ids[]", page.id %>&nbsp;<%= image_tag((page.page_image), class: "img-circle") %>&nbsp;<%= page.page_name %></td>
+                          <td><%= check_box_tag "page_ids[]", page.id, id:"checkbox" %>&nbsp;</td>
+                          <td> <%= image_tag((page.page_image), class: "img-circle image--size image--margin") %>
+                            <%= link_to page.page_name.truncate(20), "https://www.facebook.com/#{page.fb_page_id}/", target: :_blank %></td>
+
                         </tr>
                     <% end %>
                     </tbody>
                   </table>
                   </div>
                   </div>
-                  <div class="form__text-box step2">Step 2 : SELECT THE TYPE OF POST YOU WANT TO PUBLISH&nbsp;</div>
+                  <div class="form__text-box step2 margin--line">Step 2 : SELECT THE TYPE OF POST YOU WANT TO PUBLISH&nbsp;</div>
                   </section>
                   </main>
-                  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item" id="tabs3" onclick="showStuff(this)">
-                      <a class="nav-link active" data-toggle="pill" role="tab" aria-controls="pills-link" aria-selected="true">Add
-                        Status <i class="fas fa-link"></i></a>
+                  <ul class="nav nav-pills mb-3 " id="pills-tab" role="tablist">
+                    <li class=" hover" id="tabs3" onclick="showStuff(this)">
+                      <a class="nav-link active button--look" data-toggle="pill" role="tab" aria-controls="pills-link" aria-selected="true">Add
+                        Status <i class="fa fa-smile-o" aria-hidden="true"></i></a>
                     </li>
-                    <li class="nav-item" id="tabs4" onclick="showStuff(this)">
-                      <a class="nav-link" data-toggle="pill" role="tab" aria-controls="pills-home" aria-selected="false">Add
-                        Link <i class="fas fa-smile-wink"></i></a>
+                    <li class=" hover" id="tabs4" onclick="showStuff(this)">
+                      <a class="nav-link button--look" data-toggle="pill" role="tab" aria-controls="pills-home" aria-selected="false">Add
+                        Link <i class="fa fa-link"></i></a>
                     </li>
-                    <li class="nav-item" id="tabs2" onclick="showStuff(this)">
-                      <a class="nav-link" data-toggle="pill" role="tab" aria-controls="pills-profile" aria-selected="false">Add
-                        Images <i class="fas fa-image"></i></a>
+                    <li class=" hover" id="tabs2" onclick="showStuff(this)">
+                      <a class="nav-link button--look" data-toggle="pill" role="tab" aria-controls="pills-profile" aria-selected="false">Add
+                        Images <i class="fa fa-image"></i></a>
                     </li>
-                    <li class="nav-item" id="tabs1" onclick="showStuff(this)">
-                      <a class="nav-link" data-toggle="pill" role="tab" aria-controls="pills-contact" aria-selected="false">Add
-                        Videos <i class="fas fa-video"></i></a>
+                    <li class="hover" id="tabs1" onclick="showStuff(this)">
+                      <a class="nav-link button--look" data-toggle="pill" role="tab" aria-controls="pills-contact" aria-selected="false">Add
+                        Videos <i class="fa fa-video-camera" aria-hidden="true"></i></a>
                     </li>
                   </ul>
-                  <div class="tab-content" id="tabs-3">
-                    <div class="tab-pane active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                      <section class="container content ">
+
+
+                  <!--<div class="row" id="tabs-3">-->
+                     <!---->
+                    <!--<div class="col-12 col-md-6" id="tabs-3">  -->
+                    <!---->
+                    <!--</div> -->
+                    <!---->
+                     <!--<div class="col-12 col-md-6" id="tabs-3">-->
+                          <!---->
+                     <!--</div>                            -->
+                  <!--</div>-->
+
+                  <div class="row" id="tabs-3" >
+                    <div id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" style="width: 100%;">
+
+                     <div class="col-12 margin--foam pedding--foam width100 col-md-6">
                         <!-- Foam for URL-->
                         <div id="tabs-1" class="tabContent">
-                          <div class="form-group" style=" width: 50%">
-                            <%= f.file_field :video, class: "form-control " %>
+                          <div class="form-group">
+                            <%= f.file_field :video %>
                           </div>
                         </div>
                         <div id="tabs-2" class="tabContent">
-                          <div class="form-group" style=" width: 50%">
-                            <%= f.file_field :images, multiple: true, class: "form-control " %>
+                          <div class="" >
+                            <%= f.file_field :images, multiple: true  %>
                           </div>
                         </div>
                         <div id="tabs-4" class="tabContent">
-                          <div class="form-group ">
-                            <%= f.text_field :link, class: "form-control field-width box--height" %>
+                          <div class=" ">
+                            <%= f.text_field :link, class: " box--height" %>
                           </div>
                         </div>
+                        <div class="form-group description--height">
+                          <%= f.text_area :description, class: "description--height" %>
+                        </div>
+
+                     </div>
+                      <div class="col-12 col-md-6 width100 pedding--foam">
                         <div class="form-group">
-                          <%= f.text_area :description, class: "form-control field-width description--height" %>
+                          <%= f.select :start_time, [['Never', 0],['5 seconds',  0.0834],['10 seconds', 0.167],['15 seconds', 0.25],['20 seconds', 0.334],['30 seconds', 0.50],['1 minutes', 1], ['2 minutes', 2], ['5 minutes', 5], ['10 minutes(recomended)', 10]], {}, {class: 'box--height'} %>
                         </div>
                         <div class="form-group">
-                          <%= f.select :start_time, [['1 minutes', 1], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                          <%= f.select :interval, [['Never', 0],['5 seconds',  0.0834],['10 seconds', 0.167],['15 seconds', 0.25],['20 seconds', 0.334],['30 seconds', 0.50],['1 minutes', 1], ['2 minutes', 2], ['5 minutes', 5], ['10 minutes(recomended)', 10]], {}, {class: 'box--height'} %>
                         </div>
                         <div class="form-group">
-                          <%= f.select :interval, [['1 minutes', 1], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                          <%= f.select :time_gap, [['Never', 0],['5 seconds',  0.0834],['10 seconds', 0.167],['15 seconds', 0.25],['20 seconds', 0.334],['30 seconds', 0.50],['1 minutes', 1], ['2 minutes', 2], ['5 minutes', 5], ['10 minutes(recomended)', 10]], {}, {class: 'box--height'} %>
                         </div>
                         <div class="form-group">
-                          <%= f.select :time_gap, [['1 minutes', 1], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
+                          <%= f.select :delete_time, [['Never', 0],['5 seconds',  0.0834],['10 seconds', 0.167],['15 seconds', 0.25],['20 seconds', 0.334],['30 seconds', 0.50],['1 minutes', 1], ['2 minutes', 2], ['5 minutes', 5], ['10 minutes(recomended)', 10]], {}, {class: 'box--height'} %>
                         </div>
-                        <div class="form-group">
-                          <%= f.select :delete_time, [['Never', 0], ['5 minutes', 5], ['10 minutes', 10], ['15 minutes', 15], ['20 minutes(recomended)', 20]], {}, {class: 'box--height'} %>
-                        </div>
-                        <div class="form-group">
-                          <%= submit_tag "Create Post", class: "btn btn-primary" %>
-                        </div>
-                      </section>
+                      </div>
+                      <div class="form-group btn--style">
+                        <%= submit_tag "Create Post", class: "btn btn-primary  btn--margin" %>
+                      </div>
                     </div>
               <% end %>
               </div>
               </section>
   </section>
 </div>
+<script>
+    $('#checkAll').click(function () {
+        $('input:checkbox').prop('checked', this.checked);
+    });
+</script>
