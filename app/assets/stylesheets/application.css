@@ -159,6 +159,12 @@ body {
     font-weight: bold;
     font-size: 14px;
 }
+.btn--value
+{
+    margin-left:15px;
+    display: flex;
+    padding-left: 22px
+}
 .button--look
 {
     background-color: #5d696f2e;
@@ -205,9 +211,10 @@ body {
     }
     .btn--margin
     {
+        display: unset;
         margin-top: 10PX;
         padding: 4px 0px;
-        width: 100%;
+        width: 92%;
         font-weight: bold;
         font-size: 14px;
     }
@@ -215,6 +222,11 @@ body {
     {
      margin-top: 20px;
     }
+    .btn--value
+    {
+        display: unset;
+    }
+
 
 }
 @media only screen and (max-width:500px) {

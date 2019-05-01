@@ -51,7 +51,7 @@ class PostsController < ApplicationController
       scheduled_publish_time += (start_time.to_f)*60 + (time_gap.to_f)*60
 
       unless delete_time.to_f == 0
-        delete_post_time = scheduled_publish_time + (delete_time.to_f)*60
+        delete_post_time = scheduled_publish_time + (delete_time.to_f)*86400
       else
         delete_post_time = 0
       end

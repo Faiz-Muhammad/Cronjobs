@@ -16,19 +16,22 @@
             </section>
           <section class="pages">
             <% if current_user.pages.count != @accounts.count %>
-              <div class="pages__content">
-                <!-- <div class="check__all">
-                  <label class="checkboxcontainer">Check all
-                    <input type="checkbox">
+              <div class="pages__content" style="margin-left: 15px">
+                <div class="checkboxescon">
+                  <label class="checkboxcontainer u-margin-bottom-small " >Select all
+                    <input type="checkbox"  id="checkAll">
                     <span class="checkmark"></span>
                   </label>
-                </div> -->
+                  <!--<label class="checkboxcontainer u-margin-bottom-small" for="pageimages">Load Page Images-->
+                  <!--<input type="checkbox" id="pageimages">-->
+                  <!--</label>-->
+                </div>
                 <div class="profile__selector">
                   Select Facebook Pages:
                 </div>
               </div>
               <div class="pages__data">
-                <div class="pages__data-container">
+                <div >
                   <%= bootstrap_form_for(current_user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
                     <%= f.hidden_field :first_name, autofocus: true, autocomplete: 'first name', class: 'form-control' %>
                     <%= f.hidden_field :last_name, autofocus: true, autocomplete: 'last name', class: 'form-control' %>
@@ -39,7 +42,7 @@
                         <% if p.object.new_record?  %>
                           <label style="margin-left:20px;margin-top:10px">
                             <%= p.check_box :checkbox_value , style:"margin-left: -20px" %>
-                            <%= image_tag((@pages[ind].page_image), class: "img-circle",style:"margin-top:7px;margin-right:6px")%><%= @pages[ind].page_name %>
+                            <%= image_tag((@pages[ind].page_image), class: "img-circle",style:"margin-top:7px;margin-right:6px")%><%= @pages[ind].page_name.truncate(25) %>
                             <% ind += 1 %>
                           </label>
                           <%= p.hidden_field :page_name %>
@@ -48,7 +51,7 @@
                           <%= p.hidden_field :page_image %>
                         <% end %>
                       <% end %>
-                    <%= submit_tag "Save Pages",style:"display:flex;margin-top:25px; margin-left:20px"%>
+                    <%= submit_tag "Save Pages",style:"margin-top:25px", class:"btn btn-primary btn--value btn--margin"%>
                   <% end %>
                 </div>
               </div>
@@ -70,3 +73,8 @@
     </main>
   </section>
 </div>
+<script>
+    $('#checkAll').click(function () {
+        $('input:checkbox').prop('checked', this.checked);
+    });
+</script>

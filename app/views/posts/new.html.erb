@@ -112,16 +112,16 @@
                      </div>
                       <div class="col-12 col-md-6 width100 pedding--foam">
                         <div class="form-group">
-                          <%= f.select :start_time, [['Never', 0],['5 seconds',  0.0834],['10 seconds', 0.167],['15 seconds', 0.25],['20 seconds', 0.334],['30 seconds', 0.50],['1 minutes', 1], ['2 minutes', 2], ['5 minutes', 5], ['10 minutes(recomended)', 10]], {}, {class: 'box--height'} %>
+                          <%= f.select :start_time, [['Now', 0],['5 seconds',  0.0834],['10 seconds', 0.167],['15 seconds', 0.25],['20 seconds', 0.334],['30 seconds', 0.50],['1 minutes(recomended)', 1], ['2 minutes', 2], ['5 minutes', 5], ['10 minutes', 10]], {}, {class: 'box--height'} %>
                         </div>
                         <div class="form-group">
-                          <%= f.select :interval, [['Never', 0],['5 seconds',  0.0834],['10 seconds', 0.167],['15 seconds', 0.25],['20 seconds', 0.334],['30 seconds', 0.50],['1 minutes', 1], ['2 minutes', 2], ['5 minutes', 5], ['10 minutes(recomended)', 10]], {}, {class: 'box--height'} %>
+                          <%= f.select :interval, [['Now', 0],['5 seconds',  0.0834],['10 seconds', 0.167],['15 seconds', 0.25],['20 seconds', 0.334],['30 seconds', 0.50],['1 minutes(recomended)', 1], ['2 minutes', 2], ['5 minutes', 5], ['10 minutes', 10]], {}, {class: 'box--height'} %>
                         </div>
                         <div class="form-group">
-                          <%= f.select :time_gap, [['Never', 0],['5 seconds',  0.0834],['10 seconds', 0.167],['15 seconds', 0.25],['20 seconds', 0.334],['30 seconds', 0.50],['1 minutes', 1], ['2 minutes', 2], ['5 minutes', 5], ['10 minutes(recomended)', 10]], {}, {class: 'box--height'} %>
+                          <%= f.select :time_gap, [['Now', 0],['5 seconds',  0.0834],['10 seconds', 0.167],['15 seconds', 0.25],['20 seconds', 0.334],['30 seconds', 0.50],['1 minutes(recomended)', 1], ['2 minutes', 2], ['5 minutes', 5], ['10 minutes', 10]], {}, {class: 'box--height'} %>
                         </div>
                         <div class="form-group">
-                          <%= f.select :delete_time, [['Never', 0],['5 seconds',  0.0834],['10 seconds', 0.167],['15 seconds', 0.25],['20 seconds', 0.334],['30 seconds', 0.50],['1 minutes', 1], ['2 minutes', 2], ['5 minutes', 5], ['10 minutes(recomended)', 10]], {}, {class: 'box--height'} %>
+                          <%= f.select :delete_time, [['Never', 0],['1 day',  1],['2 days', 2],['3 days', 3],['4 days', 4],['5 days', 5],['7 days', 7], ['10 days', 10], ['15 days', 15], ['20 days', 20]], {}, {class: 'box--height'} %>
                         </div>
                       </div>
                       <div class="form-group btn--style">
