@@ -6,7 +6,7 @@
 
   <!-- Main content -->
   <section class="content ">
-    <% if current_user.posts.count != 0 %>
+    <% if @page_posts != 0 %>
       <div class="row table-border " style="display:block !important">
         <!-- <div class="col-md-6"> -->
         <div class="panel panel-primary">
@@ -27,7 +27,7 @@
               </tr>
               </thead>
               <tbody>
-              <% @posts.each do |post| %>
+              <% @page_posts.each do |post| %>
                 <% page = Pagespost.find_by(post_id: post.id) %>
                 <% if page.present? %>
                   <tr>

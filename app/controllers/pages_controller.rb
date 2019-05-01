@@ -27,6 +27,15 @@ class PagesController < ApplicationController
     redirect_to pages_path
   end
 
+  def page_posts
+    page_id = params['format'].to_i
+    @page_posts = []
+    page_posts = Pagespost.where(page_id: page_id, published_status: true)
+    page_posts.each do |page_post|
+    @page_posts << page_post.post
+    end
+  end
+
   private
   def pages_params(my_params)
     my_params.permit(:page_name, :fb_page_id, :page_access_token, :page_image)

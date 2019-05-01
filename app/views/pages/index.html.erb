@@ -23,6 +23,7 @@
 							<tr>
                 <th></th>
 								<th>Page Name</th>
+                <th>Total Posts</th>
 								<th>Link</th>
 								<th>Delete</th>
 							</tr>
@@ -33,7 +34,11 @@
                 <td></td>
 								<td class="screen--percentage"><%= image_tag(("https://graph.facebook.com/v2.12/#{page.fb_page_id}/picture?access_token=#{page.page_access_token}&width=50&height=50"),
                 class: " image--size user-image") %>  <%= page.page_name.truncate(15) %></td>
-								<td><%= link_to page.page_name.truncate(25), "https://www.facebook.com/#{page.fb_page_id}/", target: :_blank %></td>
+                <% posts_count = Pagespost.where(page_id:page.id,published_status: true).count %>
+
+                <td><%= link_to posts_count, page_posts_path(page) %></td>
+
+                <td><%= link_to page.page_name.truncate(25), "https://www.facebook.com/#{page.fb_page_id}/", target: :_blank %></td>
 								<td><%= link_to "", page_path(page), method: :delete, class:"btn btn-danger btn-xs glyphicon glyphicon-trash",
                  data: {confirm: "Are you sure you want to delete this record?"} %></td>
 							</tr>

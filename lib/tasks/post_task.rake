@@ -1,5 +1,5 @@
 task :fb_post => :environment do
-  pagesposts = Pagespost.where("published_status = ? AND scheduled_published_time BETWEEN ? AND ?", false, (Time.current - 1*60), (Time.current + 1*60))
+  pagesposts = Pagespost.where("published_status = ? AND scheduled_published_time BETWEEN ? AND ?", false, (Time.current - 40*60), (Time.current + 10*60))
   pagesposts.each do |pagespost|
     if pagespost.present?
       retured_post_id = PostDelayJob.perform_now(pagespost.page, pagespost.post)

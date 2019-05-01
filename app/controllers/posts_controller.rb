@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     pagespost.each do |pagepost|
       deleted_responce = Pagespost.delete_post(pagepost.page, pagepost.post)
       if deleted_responce['success']
-        pagepost.update(deleted_status:true)
+        pagepost.delete
       end
     end
     flash[:success] = "Post deleted successfully"
